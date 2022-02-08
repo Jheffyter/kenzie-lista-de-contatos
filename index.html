@@ -1,15 +1,21 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html />
+<html lang="pt-BR" />
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./assets/reset.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
 
   <body>
     <header>
-      <div>
+      <div class="container">
         <figure>
           <img src="assets/img/logo.png" alt="Logo Kenzie Academy Brasil" />
         </figure>
@@ -18,11 +24,27 @@
     </header>
 
     <main>
-      <section>
-        <input type="text" placeholder="Nome" />
-        <input type="email" placeholder="E-mail" />
-        <input type="telefone" placeholder="Telefone" />
-        <button>Adicionar</button>
+      <section class="secaoFormulario">
+        <div class="secaoFormulario_formulario">
+          <input placeholder="Nome" />
+          <input placeholder="E-mail" />
+          <input placeholder="Telefone" />
+          <button>Adicionar</button>
+        </div>        
+      </section>
+
+      <section class="secaoListaContatos">
+        <ul class="secaoListaContatos_lista">
+          <li>
+            <p>Não há contatos na sua lista!</p>
+          </li>
+          <li>
+            <button id="removerContato"></button>
+            <h2>Manu</h2>
+            <p>manu@email.com</p>
+            <span>1198989898</span>
+          </li>
+        </ul>
       </section>
     </main>
   </body>

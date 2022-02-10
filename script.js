@@ -1,4 +1,5 @@
 const listaContatosLocal = [];
+let id = 0;
 const listaContatosContainer = document.querySelector (".secaoListaContatos_lista");
 const campoNome = document.getElementById ("campoNome");
 const campoEmail = document.getElementById ("campoEmail");
@@ -10,22 +11,43 @@ function adicionarNovoContato () {
   const valorEmail = campoEmail.value;
   const valorTelefone = campoTelefone.value;
   const novoContato = {
+    id: id,
     nome: valorNome,
     email: valorEmail,
     telefone: valorTelefone
   }
+  id++;
   listaContatosLocal.push (novoContato);
   renderizarLayout ();
 }
 
 botaoAdicionar.addEventListener ("click", adicionarNovoContato);
 
+function removerContato (evento) {
+  const botaoClicado = evento.target;
+  const contatoClicado = botaoClicado.parentElement;
+  const idContatoClicado = contatoClicado.dataset.id;
+  const contatoRemovido = listaContatosLocal.find ((contato) => contato.id == idContatoClicado);
+  const posicaoContatoRemovido = listaContatosLocal.indexOf (contatoRemovido);
+  listaContatosLocal.splice (posicaoContatoRemovido, 1);
+  renderizarLayout ();
+}
+
 function renderizarLayout () {
   listaContatosContainer.innerHTML = "";
-  for (let i = 0; i < listaContatosLocal.length; i++){
-    criarLayout (listaContatosLocal[i]);
-  }
+  if (listaContatosLocal.length !== 0) {
+    for (let i = 0; i < listaContatosLocal.length; i++) {
+      criarLayout (listaContatosLocal[i]);
+    }
+  } else {
+    const listaContatoVazia = `<li>
+      <p>Não há contatos na lista!</p>
+    </li>`;
+    listaContatosContainer.innerHTML = listaContatoVazia;
+  }  
 }
+
+renderizarLayout ();
 
 function criarLayout (contato) {
   const li = document.createElement ("li");
@@ -35,6 +57,8 @@ function criarLayout (contato) {
   const span = document.createElement ("span");
 
   button.id = "removerContato";
+  button.addEventListener ("click", removerContato);
+  li.dataset.id = contato.id;
   h2.innerText = contato.nome;
   p.innerText = contato.email;
   span.innerText = contato.telefone;

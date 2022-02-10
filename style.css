@@ -13,8 +13,6 @@ header .container{
   margin: 0 auto;
 }
 
-header figure{}
-
 header figure img{
   width: 100%;
   max-width: 120px;
@@ -109,5 +107,3 @@ main section{
 .secaoListaContatos_lista li p{
   margin: 5px 0;
 }
-
-.secaoListaContatos_lista li span{}
